@@ -1,1 +1,35 @@
-<p>register works!</p>
+<form nz-form [formGroup]="registerForm" (ngSubmit)="submit()">
+  <nz-form-item>
+    <nz-form-label>Email</nz-form-label>
+    <nz-form-control nzErrorTip="Email invalid!">
+      <input nz-input formControlName="email" type="email" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label>Nume</nz-form-label>
+    <nz-form-control><input nz-input formControlName="firstName" /></nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label>Prenume</nz-form-label>
+    <nz-form-control><input nz-input formControlName="lastName" /></nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label>Parolă</nz-form-label>
+    <nz-form-control nzErrorTip="Min 6 caractere, literă mare/mică, cifră și caracter special!">
+      <input nz-input formControlName="password" type="password" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label>Confirmă Parola</nz-form-label>
+    <nz-form-control [nzValidateStatus]="registerForm.hasError('mismatch') ? 'error' : ''" 
+                     nzErrorTip="Parolele nu coincid!">
+      <input nz-input formControlName="confirmPassword" type="password" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <button nz-button nzType="primary" [disabled]="registerForm.invalid" type="submit">Înregistrare</button>
+</form>

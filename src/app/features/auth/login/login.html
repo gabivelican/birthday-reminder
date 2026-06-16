@@ -1,1 +1,26 @@
-<p>login works!!</p>
+<form nz-form [formGroup]="loginForm" (ngSubmit)="submit()">
+  <nz-form-item>
+    <nz-form-label>Email</nz-form-label>
+    <nz-form-control [nzValidateStatus]="loginForm.get('email')!" nzErrorTip="Email invalid!">
+      <input nz-input formControlName="email" type="email" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label>Parolă</nz-form-label>
+    <nz-form-control [nzValidateStatus]="loginForm.get('password')!" 
+                     nzErrorTip="Min 6 caractere, literă mare/mică, cifră și caracter special!">
+      <input nz-input formControlName="password" type="password" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control>
+      <label nz-checkbox formControlName="remember">
+        <span>Remember me</span>
+      </label>
+    </nz-form-control>
+  </nz-form-item>
+
+  <button nz-button nzType="primary" [disabled]="loginForm.invalid" type="submit">Login</button>
+</form>
