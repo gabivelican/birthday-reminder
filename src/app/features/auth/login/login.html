@@ -1,4 +1,6 @@
 <form nz-form [formGroup]="loginForm" (ngSubmit)="submit()">
+  <h2 style="text-align: center; margin-bottom: 24px; color: #333;">Autentificare</h2>
+
   <nz-form-item>
     <nz-form-label>Email</nz-form-label>
     <nz-form-control [nzValidateStatus]="loginForm.get('email')!" nzErrorTip="Email invalid!">
@@ -14,13 +16,17 @@
     </nz-form-control>
   </nz-form-item>
 
-  <nz-form-item>
+  <nz-form-item style="margin-bottom: 12px;">
     <nz-form-control>
       <label nz-checkbox formControlName="remember">
         <span>Remember me</span>
       </label>
     </nz-form-control>
   </nz-form-item>
+
+  <div class="register-link-container">
+    <a routerLink="/register" class="register-link">Nu ai cont? Creează unul</a>
+  </div>
 
   <button nz-button nzType="primary" [disabled]="loginForm.invalid" type="submit">Login</button>
 </form>
