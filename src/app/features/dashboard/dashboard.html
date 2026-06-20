@@ -1,0 +1,59 @@
+<div class="birthday-theme-wrapper">
+  <div class="dashboard-container">
+    <div class="header-section">
+      <h1>🎉 Birthday Reminder</h1>
+      <p>Manage your loved ones' birthdays</p>
+    </div>
+    
+    <div class="table-actions">
+      <nz-input-group [nzPrefix]="searchIcon" class="search-input">
+        <input nz-input placeholder="Search by name..." (input)="onSearch($event)" />
+      </nz-input-group>
+      <ng-template #searchIcon>
+        <span nz-icon nzType="search"></span>
+      </ng-template>
+
+      <button nz-button nzType="primary" class="add-button" nzSize="large">
+        + Add Person
+      </button>
+    </div>
+
+    <nz-table #tabelZileNastere [nzData]="filteredFriends()" nzBordered>
+      <thead>
+        <tr>
+          <th [nzSortFn]="sortNume">Last Name</th>
+          <th [nzSortFn]="sortPrenume">First Name</th>
+          <th>Birth Date</th>
+          <th>Phone</th>
+          <th>Relationship</th>
+          <th nzWidth="150px">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (persoana of filteredFriends(); track persoana.id) {
+          <tr>
+            <td>{{ persoana.nume }}</td>
+            <td>{{ persoana.prenume }}</td>
+            <td>{{ persoana.dataNasterii }}</td>
+            <td>{{ persoana.telefon }}</td>
+            <td>
+              <span class="badge" [ngClass]="persoana.relatie.toLowerCase()">
+                {{ persoana.relatie }}
+              </span>
+            </td>
+            <td>
+              <a (click)="editFriend(persoana)" class="action-link edit">Edit</a>
+              <nz-divider nzType="vertical"></nz-divider>
+              <a nz-popconfirm 
+                 nzPopconfirmTitle="Are you sure you want to delete this person?"
+                 (nzOnConfirm)="deleteFriend(persoana.id)" 
+                 class="action-link delete">
+                Delete
+              </a>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </nz-table>
+  </div>
+</div>

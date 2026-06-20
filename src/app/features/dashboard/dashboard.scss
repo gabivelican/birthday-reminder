@@ -1,0 +1,65 @@
+.birthday-theme-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #ffe6f2;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff718d' d='M20 20l8 15-15 8z'/%3E%3Ccircle cx='75' cy='25' r='6' fill='%2352c41a'/%3E%3Cpath fill='%231890ff' d='M75 75h12v12H75z'/%3E%3Ccircle cx='25' cy='75' r='8' fill='%23faad14'/%3E%3Cpath fill='%23eb2f96' d='M50 50l-10-10 20 0z'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 80px 80px;
+}
+
+.dashboard-container {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  top: 30px;
+  position: relative;
+}
+
+.header-section { 
+  text-align: center; 
+  margin-bottom: 30px; 
+  h1 { color: #eb2f96; } 
+}
+
+.table-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  align-items: center;
+
+  .search-input {
+    width: 300px;
+    height: 40px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    input { height: 100%; border-radius: 20px; }
+  }
+
+  .add-button {
+    height: 40px;
+    padding: 0 20px;
+    background-color: #eb2f96;
+    border-color: #eb2f96;
+    border-radius: 8px;
+    font-weight: 600;
+    &:hover { background-color: #c41d7f; border-color: #c41d7f; }
+  }
+}
+
+.badge {
+  padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 600;
+  &.friend { background-color: #e6f7ff; color: #1890ff; border: 1px solid #91d5ff; }
+  &.family { background-color: #fff0f6; color: #eb2f96; border: 1px solid #ffadd2; }
+  &.colleague { background-color: #f6ffed; color: #52c41a; border: 1px solid #b7eb8f; }
+}
+
+.action-link {
+  font-weight: 500; cursor: pointer;
+  &.edit { color: #1890ff; }
+  &.delete { color: #ff4d4f; }
+}
