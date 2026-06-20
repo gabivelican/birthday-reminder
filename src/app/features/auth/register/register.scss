@@ -1,39 +1,75 @@
-:host {
+.birthday-theme-wrapper {
+  min-height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background-color: #f0f2f5;
-  padding: 20px 15px;
+  padding: 20px;
+  background-color: #ffe6f2;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff718d' d='M20 20l8 15-15 8z'/%3E%3Ccircle cx='75' cy='25' r='6' fill='%2352c41a'/%3E%3Cpath fill='%231890ff' d='M75 75h12v12H75z'/%3E%3Ccircle cx='25' cy='75' r='8' fill='%23faad14'/%3E%3Cpath fill='%23eb2f96' d='M50 50l-10-10 20 0z'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 80px 80px;
+}
+
+.card-container {
+  width: 100%;
+  max-width: 480px;
 }
 
 form {
-  width: 100%;
-  max-width: 450px;
   padding: 30px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
 
-  button {
+  .form-title {
+    text-align: center;
+    color: #eb2f96;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+    font-weight: 700;
+  }
+
+  .form-subtitle {
+    text-align: center;
+    color: #d175a6;
+    margin-bottom: 24px;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .form-button {
     width: 100%;
-    margin-top: 15px;
+    height: 45px;
+    background-color: #eb2f96;
+    border-color: #eb2f96;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 10px;
+
+    &:hover {
+      background-color: #c41d7f;
+      border-color: #c41d7f;
+    }
   }
 }
 
-.login-link-container {
+.link-container {
   text-align: center;
-  margin-top: 15px;
-  width: 100%;
+  margin-top: 20px;
 }
 
-.login-link {
+.link {
   color: #1890ff;
   text-decoration: none;
   font-size: 14px;
-  font-weight: 300; 
-
+  font-weight: 300;
   &:hover {
     text-decoration: underline;
+    color: #eb2f96;
   }
 }

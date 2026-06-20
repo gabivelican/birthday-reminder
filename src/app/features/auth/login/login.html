@@ -1,32 +1,48 @@
-<form nz-form [formGroup]="loginForm" (ngSubmit)="submit()">
-  <h2 style="text-align: center; margin-bottom: 24px; color: #333;">Autentificare</h2>
+<div class="birthday-theme-wrapper">
+  <div class="card-container">
+    <form nz-form nzLayout="vertical" [formGroup]="loginForm" (ngSubmit)="submit()">
+      <h2 class="form-title">🎉 Good to See You Again!</h2>
+      <p class="form-subtitle">Sign in to view birthdays</p>
 
-  <nz-form-item>
-    <nz-form-label>Email</nz-form-label>
-    <nz-form-control [nzValidateStatus]="loginForm.get('email')!" nzErrorTip="Email invalid!">
-      <input nz-input formControlName="email" type="email" />
-    </nz-form-control>
-  </nz-form-item>
+      <nz-form-item>
+        <nz-form-label>Email</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="email" type="email" placeholder="email@example.com" />
+        </nz-form-control>
+      </nz-form-item>
 
-  <nz-form-item>
-    <nz-form-label>Parolă</nz-form-label>
-    <nz-form-control [nzValidateStatus]="loginForm.get('password')!" 
-                     nzErrorTip="Min 6 caractere, literă mare/mică, cifră și caracter special!">
-      <input nz-input formControlName="password" type="password" />
-    </nz-form-control>
-  </nz-form-item>
+      <nz-form-item>
+        <nz-form-label>Password</nz-form-label>
+        <nz-form-control>
+          <nz-input-group [nzSuffix]="suffixTemplate">
+            <input nz-input 
+                   [type]="passwordVisible ? 'text' : 'password'" 
+                   formControlName="password" 
+                   placeholder="********" />
+          </nz-input-group>
+          <ng-template #suffixTemplate>
+            <span nz-icon 
+                  [nzType]="passwordVisible ? 'eye-invisible' : 'eye'" 
+                  (click)="passwordVisible = !passwordVisible"
+                  style="cursor: pointer;">
+            </span>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
 
-  <nz-form-item style="margin-bottom: 12px;">
-    <nz-form-control>
-      <label nz-checkbox formControlName="remember">
-        <span>Remember me</span>
-      </label>
-    </nz-form-control>
-  </nz-form-item>
+      <nz-form-item>
+        <label nz-checkbox formControlName="remember">
+          <span>Remember me</span>
+        </label>
+      </nz-form-item>
 
-  <div class="register-link-container">
-    <a routerLink="/register" class="register-link">Nu ai cont? Creează unul</a>
+      <button nz-button nzType="primary" class="form-button" type="submit">
+        Login
+      </button>
+
+      <div class="link-container">
+        <a routerLink="/register" class="link">New here? Create an account.</a>
+      </div>
+    </form>
   </div>
-
-  <button nz-button nzType="primary" [disabled]="loginForm.invalid" type="submit">Login</button>
-</form>
+</div>
