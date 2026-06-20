@@ -4,6 +4,11 @@ import { guestGuard } from './core/guards/guest.guard';
 
 export const routes: Routes = [
   { 
+    path: '', 
+    redirectTo: 'login', 
+    pathMatch: 'full' 
+  },
+  { 
     path: 'login', 
     loadComponent: () => import('./features/auth/login/login').then(m => m.Login),
     canActivate: [guestGuard] 
@@ -11,13 +16,15 @@ export const routes: Routes = [
   { 
     path: 'register', 
     loadComponent: () => import('./features/auth/register/register').then(m => m.Register),
-    canActivate: [guestGuard] 
+    canActivate: [guestGuard]
   },
   { 
     path: 'dashboard', 
     loadComponent: () => import('./features/dashboard/dashboard').then(m => m.Dashboard),
     canActivate: [authGuard] 
   },
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: '**', redirectTo: 'login' }
+  { 
+    path: '**', 
+    redirectTo: 'login' 
+  }
 ];

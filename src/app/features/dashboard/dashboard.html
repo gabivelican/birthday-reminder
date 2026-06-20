@@ -13,24 +13,29 @@
         <span nz-icon nzType="search"></span>
       </ng-template>
 
-      <button nz-button nzType="primary" class="add-button" nzSize="large">
-        + Add Person
-      </button>
+      <div style="display: flex; gap: 15px;">
+        <button nz-button nzDanger nzSize="large" style="border-radius: 8px; font-weight: 600;" (click)="logout()">
+          Logout
+        </button>
+        <button nz-button nzType="primary" class="add-button" nzSize="large" (click)="openAddModal()">
+          + Add Person
+        </button>
+      </div>
     </div>
 
-    <nz-table #tabelZileNastere [nzData]="filteredFriends()" nzBordered>
+    <nz-table #tabelZileNastere [nzData]="filteredFriends()" [nzPageSize]="6" nzBordered>
       <thead>
         <tr>
           <th [nzSortFn]="sortNume">Last Name</th>
           <th [nzSortFn]="sortPrenume">First Name</th>
-          <th>Birth Date</th>
-          <th>Phone</th>
-          <th>Relationship</th>
+          <th [nzSortFn]="sortDataNasterii">Birth Date</th>
+          <th [nzSortFn]="sortTelefon">Phone</th>
+          <th [nzSortFn]="sortRelatie">Relationship</th>
           <th nzWidth="150px">Actions</th>
         </tr>
       </thead>
       <tbody>
-        @for (persoana of filteredFriends(); track persoana.id) {
+        @for (persoana of tabelZileNastere.data; track persoana.id) {
           <tr>
             <td>{{ persoana.nume }}</td>
             <td>{{ persoana.prenume }}</td>
@@ -55,5 +60,13 @@
         }
       </tbody>
     </nz-table>
+
+    <app-person-modal 
+      [isVisible]="isModalVisible" 
+      [personToEdit]="selectedFriend"
+      (closeModal)="closeModal()"
+      (savePerson)="handleSave($event)">
+    </app-person-modal>
+
   </div>
 </div>

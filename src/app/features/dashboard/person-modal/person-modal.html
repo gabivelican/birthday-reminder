@@ -1,0 +1,57 @@
+<nz-modal
+  [nzVisible]="isVisible"
+  [nzTitle]="personToEdit ? 'Edit Person' : 'Add Person'"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+  [nzOkText]="'Save'"
+  [nzCancelText]="'Cancel'">
+  
+  <ng-container *nzModalContent>
+    <form nz-form nzLayout="vertical" [formGroup]="personForm">
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+        <nz-form-item>
+          <nz-form-label nzRequired>Last Name</nz-form-label>
+          <nz-form-control nzErrorTip="Required field">
+            <input nz-input formControlName="nume" placeholder="e.g. Popescu" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label nzRequired>First Name</nz-form-label>
+          <nz-form-control nzErrorTip="Required field">
+            <input nz-input formControlName="prenume" placeholder="e.g. Ion" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <nz-form-item>
+        <nz-form-label nzRequired>Birth Date</nz-form-label>
+        <nz-form-control nzErrorTip="Required field">
+          <input nz-input type="date" formControlName="dataNasterii" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+        <nz-form-item>
+          <nz-form-label nzRequired>Phone</nz-form-label>
+          <nz-form-control nzErrorTip="Must be 10 digits">
+            <input nz-input formControlName="telefon" placeholder="07xxxxxxxx" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label nzRequired>Relationship</nz-form-label>
+          <nz-form-control>
+            <nz-select formControlName="relatie">
+              <nz-option nzValue="Friend" nzLabel="Friend"></nz-option>
+              <nz-option nzValue="Family" nzLabel="Family"></nz-option>
+              <nz-option nzValue="Colleague" nzLabel="Colleague"></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+    </form>
+  </ng-container>
+</nz-modal>
