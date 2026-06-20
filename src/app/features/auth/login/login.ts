@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router'; // Am adăugat RouterLink aici
+import { Router, RouterLink } from '@angular/router';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { passwordValidator } from '../../../core/validators/password.validator';
 import { AuthService } from '../../../core/services/auth.service';
 
@@ -17,6 +18,7 @@ import { AuthService } from '../../../core/services/auth.service';
     NzInputModule, 
     NzButtonModule, 
     NzCheckboxModule, 
+    NzIconModule,
     RouterLink,
   ],
   templateUrl: './login.html',
@@ -26,6 +28,8 @@ export class Login {
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
   private router = inject(Router);
+
+  passwordVisible: boolean = false; 
 
   loginForm: FormGroup = this.fb.group({
     email: ['eve.holt@reqres.in', [Validators.required, Validators.email]],
@@ -44,8 +48,8 @@ export class Login {
           this.router.navigate(['/dashboard']);
         },
         error: (err) => {
-          console.error('Eroare logare (API-ul a respins datele):', err);
-          this.handleToken('fake-token-pentru-demo', remember);
+          console.error('Login error:', err);
+          this.handleToken('fake-token-for-demo', remember);
           this.router.navigate(['/dashboard']);
         }
       });

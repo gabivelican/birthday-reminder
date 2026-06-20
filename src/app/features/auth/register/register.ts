@@ -4,18 +4,21 @@ import { Router, RouterLink } from '@angular/router';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { passwordValidator } from '../../../core/validators/password.validator';
 import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, NzFormModule, NzInputModule, NzButtonModule, RouterLink],
+  imports: [ReactiveFormsModule, NzFormModule, NzInputModule, NzButtonModule, NzIconModule, RouterLink],
   templateUrl: './register.html',
   styleUrl: './register.scss'
 })
 export class Register {
   registerForm: FormGroup;
+  passwordVisible = false;
+  confirmPasswordVisible = false;
   
   private authService = inject(AuthService);
   private router = inject(Router);
@@ -44,7 +47,7 @@ export class Register {
           this.router.navigate(['/dashboard']);
         },
         error: (err) => {
-          console.error('Eroare înregistrare (Reqres acceptă doar eve.holt@reqres.in):', err);
+          console.error('Registration error:', err);
           localStorage.setItem('token', 'fake-token-pentru-demo');
           this.router.navigate(['/dashboard']);
         }
