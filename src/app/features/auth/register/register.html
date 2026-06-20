@@ -1,35 +1,46 @@
-<form nz-form [formGroup]="registerForm" (ngSubmit)="submit()">
+<form nz-form nzLayout="vertical" [formGroup]="registerForm" (ngSubmit)="submit()">
+  <h2 style="text-align: center; margin-bottom: 24px; color: #333;">Creează un cont</h2>
+
   <nz-form-item>
-    <nz-form-label>Email</nz-form-label>
-    <nz-form-control nzErrorTip="Email invalid!">
-      <input nz-input formControlName="email" type="email" />
+    <nz-form-label nzRequired>Email</nz-form-label>
+    <nz-form-control [nzValidateStatus]="registerForm.get('email')!" nzErrorTip="Adresă de email invalidă!">
+      <input nz-input formControlName="email" type="email" placeholder="ex: nume@exemplu.com" />
     </nz-form-control>
   </nz-form-item>
 
   <nz-form-item>
-    <nz-form-label>Nume</nz-form-label>
-    <nz-form-control><input nz-input formControlName="firstName" /></nz-form-control>
-  </nz-form-item>
-
-  <nz-form-item>
-    <nz-form-label>Prenume</nz-form-label>
-    <nz-form-control><input nz-input formControlName="lastName" /></nz-form-control>
-  </nz-form-item>
-
-  <nz-form-item>
-    <nz-form-label>Parolă</nz-form-label>
-    <nz-form-control nzErrorTip="Min 6 caractere, literă mare/mică, cifră și caracter special!">
-      <input nz-input formControlName="password" type="password" />
+    <nz-form-label nzRequired>Nume</nz-form-label>
+    <nz-form-control nzErrorTip="Acest câmp este obligatoriu!">
+      <input nz-input formControlName="lastName" placeholder="Numele tău" />
     </nz-form-control>
   </nz-form-item>
 
   <nz-form-item>
-    <nz-form-label>Confirmă Parola</nz-form-label>
+    <nz-form-label nzRequired>Prenume</nz-form-label>
+    <nz-form-control nzErrorTip="Acest câmp este obligatoriu!">
+      <input nz-input formControlName="firstName" placeholder="Prenumele tău" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label nzRequired>Parolă</nz-form-label>
+    <nz-form-control [nzValidateStatus]="registerForm.get('password')!" 
+                     nzErrorTip="Min 6 caractere, 1 literă mare/mică, 1 cifră, 1 caracter special!">
+      <input nz-input formControlName="password" type="password" placeholder="Alege o parolă puternică" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label nzRequired>Confirmă Parola</nz-form-label>
     <nz-form-control [nzValidateStatus]="registerForm.hasError('mismatch') ? 'error' : ''" 
                      nzErrorTip="Parolele nu coincid!">
-      <input nz-input formControlName="confirmPassword" type="password" />
+      <input nz-input formControlName="confirmPassword" type="password" placeholder="Repetă parola" />
     </nz-form-control>
   </nz-form-item>
 
   <button nz-button nzType="primary" [disabled]="registerForm.invalid" type="submit">Înregistrare</button>
+
+  <div class="login-link-container">
+    <a routerLink="/login" class="login-link">Ai deja cont? Loghează-te</a>
+  </div>
 </form>
