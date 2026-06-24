@@ -49,7 +49,6 @@ export class Dashboard implements OnInit {
     );
   });
 
-  // Funcții de sortare pentru fiecare coloană în parte
   sortNume = (a: Friend, b: Friend) => a.nume.localeCompare(b.nume);
   sortPrenume = (a: Friend, b: Friend) => a.prenume.localeCompare(b.prenume);
   sortDataNasterii = (a: Friend, b: Friend) => new Date(a.dataNasterii).getTime() - new Date(b.dataNasterii).getTime();
